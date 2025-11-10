@@ -30,6 +30,6 @@ public interface StoryRepository extends JpaRepository<Story, String> {
     @Query("SELECT s FROM Story s JOIN s.categories c WHERE c.id = :categoryId")
     Page<Story> findAllByCategory(@Param("categoryId") String categoryId, Pageable pageable);
 
-    
+    Optional<Story> findBySlug(String slug);
 }
 

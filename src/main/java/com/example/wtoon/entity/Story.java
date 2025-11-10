@@ -36,6 +36,8 @@ public class Story {
     @OneToMany(mappedBy = "story", fetch = FetchType.LAZY)
     @OrderBy("chapterName ASC")
     private List<Chapter> chapters;
+    @Column(name = "view_count", columnDefinition = "BIGINT DEFAULT 0")
+    private Long viewCount = 0L;
     private LocalDateTime updatedAt;
     private LocalDateTime lastSyncedAt;
     private LocalDateTime lastChapterSyncAt;

@@ -8,7 +8,9 @@ import com.example.wtoon.repository.StoryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -34,5 +36,18 @@ public class StoryService {
     public Page<StorySummaryDTO> getStoriesByCategory(String categoryId, Pageable pageable) {
         Page<Story> storiesPage = storyRepository.findAllByCategory(categoryId, pageable);
         return storiesPage.map(storyMapper::toSummaryDto);
+    }
+
+    @Async
+    @Transactional
+    public void incrementViewCount(String slug) {
+        Optional<Story> storyOpt = storyRepository.findBySlug(slug);
+
+        if (storyOpt.isPresent()) {
+            Story story = storyOpt.get();
+            long currentViews = (story.getViewCount() == null) ? 0 : story.getViewCount();
+            story.setViewCount(currentViews + 1);
+            storyRepository.save(story);
+        }
     }
 }

@@ -45,7 +45,7 @@ public class StoryController {
                         HttpStatus.NOT_FOUND,
                         "Story not found with slug: " + slug
                 ));
-
+        storyService.incrementViewCount(slug);
         return ResponseEntity.ok(storyDto);
     }
 }

@@ -23,4 +23,5 @@ public class StoryDetailDTO {
     private String description;
     private String author;
     private List<ChapterInfoDTO> chapters;
+    private Long viewCount;
 }
