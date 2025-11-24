@@ -1,12 +1,10 @@
 package com.example.wtoon.repository;
 
-import com.example.wtoon.entity.Chapter;
 import com.example.wtoon.entity.ChapterImage;
+import com.example.wtoon.repository.custom.ChapterImageRepositoryCustom;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import java.util.List;
 
 @Repository
-public interface ChapterImageRepository extends JpaRepository<ChapterImage, Long> {
-    List<ChapterImage> findAllByChapterOrderByImagePageAsc(Chapter chapter);
+public interface ChapterImageRepository extends JpaRepository<ChapterImage, Long>, ChapterImageRepositoryCustom {
 }

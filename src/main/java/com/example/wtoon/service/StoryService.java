@@ -24,7 +24,7 @@ public class StoryService {
     private final StoryMapper storyMapper;
 
     public Page<StorySummaryDTO> getStories(Pageable pageable) {
-        Page<Story> storiesPage = storyRepository.findAll(pageable);
+        Page<Story> storiesPage = storyRepository.findAllWithCategories(pageable);
         return storiesPage.map(storyMapper::toSummaryDto);
     }
 
