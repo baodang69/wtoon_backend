@@ -1,6 +1,7 @@
-package com.example.wtoon.repository.custom;
+package com.example.wtoon.repository.impl;
 
 import com.example.wtoon.entity.Story;
+import com.example.wtoon.repository.custom.StoryRepositoryCustom;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
