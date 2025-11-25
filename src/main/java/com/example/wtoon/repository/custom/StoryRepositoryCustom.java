@@ -8,11 +8,11 @@ import java.util.List;
 import java.util.Optional;
 
 public interface StoryRepositoryCustom {
-    List<Story> findStoriesToSyncChapters(Pageable pageable);
+    List<Story> getStoriesToSyncChapters(Pageable pageable);
     
-    Page<Story> findAllWithCategories(Pageable pageable);
+    Page<Story> getAllStoriesWithCategories(Pageable pageable);
     
-    Optional<Story> findBySlugWithDetails(String slug);
+    Optional<Story> getStoryDetailBySlug(String slug);
     
-    Page<Story> findAllByCategory(String categoryId, Pageable pageable);
+    Page<Story> getStoriesByCategoryId(String categoryId, Pageable pageable);
 }

@@ -9,6 +9,5 @@ import java.util.List;
 
 @Repository
 public interface ChapterImageRepository extends JpaRepository<ChapterImage, Long> {
-    // Spring Data JPA derived query method - không cần custom implementation
     List<ChapterImage> findAllByChapterOrderByImagePageAsc(Chapter chapter);
 }

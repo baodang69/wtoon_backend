@@ -150,7 +150,7 @@ public class CrawlService {
         log.info("--- BẮT ĐẦU JOB 3 (Sync Chapter) ---");
 
         Pageable pageable = PageRequest.of(0, JOB_3_PAGE_SIZE);
-        List<Story> storiesToUpdate = storyRepository.findStoriesToSyncChapters(pageable);
+        List<Story> storiesToUpdate = storyRepository.getStoriesToSyncChapters(pageable);
 
         if (storiesToUpdate.isEmpty()) {
             log.info("Job 3: Không có truyện nào cần đồng bộ chapter.");

@@ -16,13 +16,13 @@ import java.util.Optional;
 
 @Repository
 @RequiredArgsConstructor
-public class StoryRepositoryCustomImpl implements StoryRepositoryCustom {
+public class StoryRepositoryImpl implements StoryRepositoryCustom {
 
     @PersistenceContext
     private final EntityManager entityManager;
 
     @Override
-    public List<Story> findStoriesToSyncChapters(Pageable pageable) {
+    public List<Story> getStoriesToSyncChapters(Pageable pageable) {
         String jpql = "SELECT s FROM Story s " +
                 "WHERE s.lastChapterSyncAt IS NULL OR s.updatedAt > s.lastChapterSyncAt " +
                 "ORDER BY s.updatedAt DESC";
@@ -35,7 +35,7 @@ public class StoryRepositoryCustomImpl implements StoryRepositoryCustom {
     }
 
     @Override
-    public Page<Story> findAllWithCategories(Pageable pageable) {
+    public Page<Story> getAllStoriesWithCategories(Pageable pageable) {
         String jpql = "SELECT DISTINCT s FROM Story s LEFT JOIN FETCH s.categories";
         
         TypedQuery<Story> query = entityManager.createQuery(jpql, Story.class);
@@ -51,7 +51,7 @@ public class StoryRepositoryCustomImpl implements StoryRepositoryCustom {
     }
 
     @Override
-    public Optional<Story> findBySlugWithDetails(String slug) {
+    public Optional<Story> getStoryDetailBySlug(String slug) {
         String jpql = "SELECT DISTINCT s FROM Story s " +
                 "LEFT JOIN FETCH s.categories " +
                 "LEFT JOIN FETCH s.chapters " +
@@ -64,7 +64,7 @@ public class StoryRepositoryCustomImpl implements StoryRepositoryCustom {
     }
 
     @Override
-    public Page<Story> findAllByCategory(String categoryId, Pageable pageable) {
+    public Page<Story> getStoriesByCategoryId(String categoryId, Pageable pageable) {
         String jpql = "SELECT s FROM Story s JOIN s.categories c WHERE c.id = :categoryId";
         
         TypedQuery<Story> query = entityManager.createQuery(jpql, Story.class);
