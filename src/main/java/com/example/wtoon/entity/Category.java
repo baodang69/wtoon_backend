@@ -10,6 +10,7 @@ public class Category {
     @Id
     private String id;
 
+    @Column(nullable = false)
     private String name;
 
     @Column(unique = true, nullable = false)

@@ -10,6 +10,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -23,15 +24,19 @@ public class StoryController {
     public ResponseEntity<Page<StorySummaryResponseDTO>> getStories(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "20") int size,
-            @RequestParam(required = false) String categoryId) {
+            @RequestParam(required = false) String categoryId,
+            @RequestParam(required = false) String daysOfWeek) {
         
-        Pageable pageable = PageRequest.of(page, size, Sort.by("updatedAt").descending());
+        Pageable pageable = PageRequest.of(page, size, Sort.by("updatedAt").ascending());
         Page<StorySummaryResponseDTO> storiesPage;
         
-        if (categoryId == null || categoryId.isEmpty()) {
-            storiesPage = storyService.getStories(pageable);
-        } else {
+        if (StringUtils.hasText(categoryId)) {
             storiesPage = storyService.getStoriesByCategory(categoryId, pageable);
+        }
+        else if (StringUtils.hasText(daysOfWeek)) {
+            storiesPage = storyService.getStoriesByDaysOfWeek(daysOfWeek, pageable);
+        } else {
+            storiesPage = storyService.getStories(pageable);
         }
         
         return ResponseEntity.ok(storiesPage);

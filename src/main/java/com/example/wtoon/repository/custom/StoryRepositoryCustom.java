@@ -15,4 +15,6 @@ public interface StoryRepositoryCustom {
     Optional<Story> getStoryDetailBySlug(String slug);
     
     Page<Story> getStoriesByCategoryId(String categoryId, Pageable pageable);
+
+    Page<Story> getStoriesByDaysOfWeek(String daysOfWeek, Pageable pageable);
 }

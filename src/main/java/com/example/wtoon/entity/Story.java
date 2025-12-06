@@ -17,11 +17,22 @@ public class Story {
     @Column(unique = true, nullable = false)
     private String slug;
 
+    @Column(nullable = false)
     private String name;
+
+    @Column(nullable = true)
     private String status;
+
+    @Column(nullable = true)
     private String thumbUrl;
+
+    @Column(nullable = false)
     private String cdnDomain;
+
+    @Column(nullable = true)
     private String description;
+
+    @Column(nullable = true)
     private String author;
 
     // Ánh xạ N:N với Category
@@ -36,8 +47,10 @@ public class Story {
     @OneToMany(mappedBy = "story", fetch = FetchType.LAZY)
     @OrderBy("chapterName ASC")
     private List<Chapter> chapters;
+
     @Column(name = "view_count", columnDefinition = "BIGINT DEFAULT 0")
     private Long viewCount = 0L;
+    
     private LocalDateTime updatedAt;
     private LocalDateTime lastSyncedAt;
     private LocalDateTime lastChapterSyncAt;

@@ -23,6 +23,8 @@ public class Chapter {
 
     @Column(nullable = false)
     private String chapterName;
+
+    @Column(nullable = false)
     private String chapterTitle;
 
     @Column(nullable = false, unique = true)

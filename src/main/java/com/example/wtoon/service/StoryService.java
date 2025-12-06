@@ -62,6 +62,11 @@ public class StoryService {
         return storiesPage.map(storyMapper::toSummaryDto);
     }
 
+    public Page<StorySummaryResponseDTO> getStoriesByDaysOfWeek(String dow, Pageable pageable) {
+        Page<Story> storiesPage = storyRepository.getStoriesByDaysOfWeek(dow, pageable);
+        return storiesPage.map(storyMapper::toSummaryDto);
+    }
+
     @Async
     @Transactional
     public void incrementViewCount(String slug) {
