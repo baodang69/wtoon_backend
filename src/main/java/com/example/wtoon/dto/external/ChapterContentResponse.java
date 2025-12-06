@@ -1,9 +1,12 @@
-package com.example.wtoon.dto.request.content; // Đặt trong package con
+package com.example.wtoon.dto.external;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import java.util.List;
 
+/**
+ * DTO để parse response nội dung chapter từ API bên ngoài
+ */
 @Data
 public class ChapterContentResponse {
     private ChapterContentData data;

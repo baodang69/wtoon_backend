@@ -1,11 +1,8 @@
 package com.example.wtoon.controller;
 
-
 import com.example.wtoon.dto.response.CategoryResponseDTO;
 import com.example.wtoon.service.CategoryService;
 import lombok.RequiredArgsConstructor;
-import org.apache.coyote.Response;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +14,6 @@ import java.util.List;
 @RequestMapping("/api/v1/categories")
 @RequiredArgsConstructor
 public class CategoryController {
-    @Autowired
     private final CategoryService categoryService;
 
     @GetMapping

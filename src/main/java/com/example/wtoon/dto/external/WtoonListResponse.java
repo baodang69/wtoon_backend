@@ -1,11 +1,14 @@
-package com.example.wtoon.dto.request;
+package com.example.wtoon.dto.external;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import java.util.List;
 
+/**
+ * DTO để parse response danh sách truyện từ API bên ngoài
+ */
 @Data
-public class WtoonResponse {
+public class WtoonListResponse {
     private String status;
     private ResponseData data;
 
@@ -38,12 +41,12 @@ public class WtoonResponse {
         private String status;
         @JsonProperty("thumb_url")
         private String thumbUrl;
-        private String updatedAt; // Dạng String, sẽ parse sau
-        private List<CategoryDTO> category;
+        private String updatedAt;
+        private List<CategoryItem> category;
     }
 
     @Data
-    public static class CategoryDTO {
+    public static class CategoryItem {
         private String id;
         private String name;
         private String slug;

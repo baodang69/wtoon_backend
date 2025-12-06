@@ -20,10 +20,13 @@ public class ChapterImage {
 
     @Column(nullable = false)
     private String domainCdn;
+
     @Column(nullable = false)
     private String chapterPath;
+
     @Column(nullable = false)
     private int imagePage;
+
     @Column(nullable = false)
     private String imageFile;
 

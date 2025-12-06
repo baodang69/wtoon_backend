@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ChapterInfoDTO {
+public class ChapterInfoResponseDTO {
     private String id;
     private String chapterName;
     private String chapterTitle;
