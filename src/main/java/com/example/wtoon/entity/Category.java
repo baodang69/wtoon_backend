@@ -16,5 +16,4 @@ public class Category {
     @Column(unique = true, nullable = false)
     private String slug;
 
-    // Không cần ánh xạ ManyToMany ngược lại nếu chưa cần
 }

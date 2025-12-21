@@ -35,7 +35,6 @@ public class Story {
     @Column(nullable = true)
     private String author;
 
-    // Ánh xạ N:N với Category
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "story_category",

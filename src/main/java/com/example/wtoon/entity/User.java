@@ -1,11 +1,12 @@
 package com.example.wtoon.entity;
 
+import com.example.wtoon.enums.UserStatus;
 import jakarta.persistence.*;
 import lombok.Data;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "\"user\"") // "user" là từ khóa SQL, nên để trong ngoặc kép
+@Table(name = "\"users\"")
 @Data
 public class User {
     @Id
@@ -26,4 +27,7 @@ public class User {
 
     @Column(length = 50, columnDefinition = "VARCHAR(50) DEFAULT 'user'")
     private String role;
+
+    @Column(nullable = false)
+    private UserStatus status;
 }
