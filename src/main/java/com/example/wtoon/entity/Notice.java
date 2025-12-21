@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name="notice")
 @Data
-public class Notice {
+public class Notice extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
@@ -22,7 +22,4 @@ public class Notice {
 
     @Column(columnDefinition = "BOOLEAN DEFAULT TRUE")
     private Boolean isActive = true;
-
-    @Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-    private LocalDateTime createdAt;
 }

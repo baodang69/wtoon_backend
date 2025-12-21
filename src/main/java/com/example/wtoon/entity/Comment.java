@@ -6,11 +6,9 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "comment", uniqueConstraints = {
-        @UniqueConstraint(columnNames = {"chapter_id", "user_id"})
-})
+@Table(name = "comment")
 @Data
-public class Comment {
+public class Comment extends BaseEntity {
     @Id
     private String id;
 
@@ -22,12 +20,13 @@ public class Comment {
     @JoinColumn(name = "chapter_id", nullable = false)
     private Chapter chapter;
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String content;
 
     @Column(columnDefinition = "BOOLEAN DEFAULT FALSE")
     private Boolean isDeleted = false;
 
-    @Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-    private LocalDateTime createdAt;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "parent_id")
+    private Comment parent;
 }

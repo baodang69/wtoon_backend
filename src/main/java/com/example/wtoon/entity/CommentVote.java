@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
         @UniqueConstraint(columnNames = {"user_id", "comment_id"})
 })
 @Data
-public class CommentVote {
+public class CommentVote extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -25,7 +25,4 @@ public class CommentVote {
 
     @Column(nullable = false)
     private Integer voteType;
-
-    @Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-    private LocalDateTime votedAt;
 }
