@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @Data
 public class Comment extends BaseEntity {
     @Id
-    private String id;
+    private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)

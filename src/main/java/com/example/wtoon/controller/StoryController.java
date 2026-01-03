@@ -46,7 +46,7 @@ public class StoryController {
     public ResponseEntity<StoryDetailResponseDTO> getStoryDetails(@PathVariable String slug) {
         StoryDetailResponseDTO storyDto = storyService.getStoryBySlug(slug)
                 .orElseThrow(() -> new ResourceNotFoundException("Story", "slug", slug));
-        storyService.incrementViewCount(slug);
+//        storyService.incrementViewCount(slug);
         return ResponseEntity.ok(storyDto);
     }
 }

@@ -12,8 +12,8 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableAsync
 @OpenAPIDefinition(
 		info = @Info(
-				title = "Wtoon API", // Tiêu đề của API
-				version = "1.0.0", // Phiên bản
+				title = "Wtoon API",
+				version = "1.0.0",
 				description = "API Backend cho dự án Webtoon Clone"
 		)
 )

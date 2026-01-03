@@ -6,5 +6,4 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ChapterRepository extends JpaRepository<Chapter, String> {
-    // existsById đã có sẵn từ JpaRepository
 }

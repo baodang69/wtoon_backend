@@ -3,7 +3,7 @@ package com.example.wtoon.entity;
 import com.example.wtoon.enums.UserStatus;
 import jakarta.persistence.*;
 import lombok.Data;
-import java.time.LocalDateTime;
+
 import java.util.HashSet;
 import java.util.Set;
 
